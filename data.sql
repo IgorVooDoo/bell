@@ -1,9 +1,9 @@
 
-insert into country_type (name, code) values ("Россия",643);
-insert into country_type (name, code) values ("Канада",124);
-insert into country_type (name, code) values ("Мадагаскар",261);
-insert into country_type (name, code) values ("Камбоджа",116);
-insert into country_type (name, code) values ("Нидерланды",528);
+insert into country_type (name, code) values ('Россия',643);
+insert into country_type (name, code) values ('Канада',124);
+insert into country_type (name, code) values ('Мадагаскар',261);
+insert into country_type (name, code) values ('Камбоджа',116);
+insert into country_type (name, code) values ('Нидерланды',528);
 /*
 id |name       |code |
 ---|-----------|-----|

@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS Organization (
   id INT NOT NULL AUTO_INCREMENT COMMENT 'Уникальный идентификатор',
   name VARCHAR(20) NOT NULL COMMENT 'Краткое наименование организации',
   full_name VARCHAR(45) NOT NULL COMMENT 'Полное наименование организации',
-  adress VARCHAR(100) NOT NULL COMMENT 'Юридический адрес',
+  address VARCHAR(100) NOT NULL COMMENT 'Юридический адрес',
   phone VARCHAR(20) COMMENT 'Номер телефона',
   inn BIGINT NOT NULL COMMENT 'ИНН',
   kpp BIGINT NOT NULL COMMENT 'КПП',
