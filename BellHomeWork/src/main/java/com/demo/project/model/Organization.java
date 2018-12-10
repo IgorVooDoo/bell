@@ -78,7 +78,7 @@ public class Organization {
     }
 
     public void setIsActive(boolean isActive) {
-        isActive = isActive;
+        this.isActive = isActive;
     }
     public String toString(){
         return "{id:"+id+";name:"+name+";}";

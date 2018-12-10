@@ -7,6 +7,7 @@ import com.demo.project.view.OrganizationView;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
     private final OrganizationDao dao;
@@ -34,4 +35,6 @@ public class OrganizationServiceImpl implements OrganizationService {
         Organization all = dao.findById(id);
         return mF.map(all,OrganizationView.class);
     }
+
+
 }
