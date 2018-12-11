@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Organization {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String fullName;
@@ -16,6 +16,9 @@ public class Organization {
     private long kpp;
     @Column(name = "is_active")
     private boolean isActive;
+
+    public Organization() {
+    }
 
     public int getId() {
         return id;

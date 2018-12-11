@@ -10,7 +10,7 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value="/api", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api", produces = APPLICATION_JSON_VALUE)
 public class OrganizationController {
     private final OrganizationService service;
 
@@ -19,19 +19,28 @@ public class OrganizationController {
     }
 
     @GetMapping("/organizations")
-    public List<OrganizationView> all(){
+    public List<OrganizationView> all() {
         return service.all();
     }
 
     @PostMapping("/organization/list")
-    public List<OrganizationView> filter(@RequestBody Organization org){
+    public List<OrganizationView> filter(@RequestBody Organization org) {
         return service.findByName(org.getName());
     }
 
     @GetMapping("/organization")
-    public OrganizationView getOrgById(@RequestParam int id){
+    public OrganizationView getOrgById(@RequestParam int id) {
         return service.findById(id);
     }
 
+    @PostMapping("/organization/update")
+    public OrganizationView update(@RequestBody Organization org) {
+        return service.update(org);
+    }
+
+    @PostMapping("/organization/save")
+    public OrganizationView save(@RequestBody Organization org) {
+        return service.save(org);
+    }
 
 }

@@ -5,6 +5,7 @@ import com.demo.project.model.Organization;
 import com.demo.project.model.mapper.MapperFacade;
 import com.demo.project.view.OrganizationView;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,22 +20,49 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public List<OrganizationView> all(){
+    public List<OrganizationView> all() {
         Iterable<Organization> all = dao.findAll();
-        return mF.mapAsList(all,OrganizationView.class);
+        return mF.mapAsList(all, OrganizationView.class);
     }
 
     @Override
     public List<OrganizationView> findByName(String name) {
         Iterable<Organization> all = dao.findByName(name);
-        return mF.mapAsList(all,OrganizationView.class);
+        return mF.mapAsList(all, OrganizationView.class);
     }
 
     @Override
-    public OrganizationView findById(int id){
+    public OrganizationView findById(int id) {
         Organization all = dao.findById(id);
-        return mF.map(all,OrganizationView.class);
+        return mF.map(all, OrganizationView.class);
     }
 
+    @Override
+    public OrganizationView update(Organization org) {
+        Organization all = dao.findById(org.getId());
+        all.setName(org.getName());
+        all.setFullName(org.getFullName());
+        all.setAddress(org.getAddress());
+        all.setInn(org.getInn());
+        all.setKpp(org.getKpp());
+        all.setPhone(org.getPhone());
+        all.setIsActive(org.getIsActive());
+        dao.save(all);
+        return mF.map(all, OrganizationView.class);
+    }
 
+    @Override
+    @Transactional
+    public OrganizationView save(Organization org) {
+        Organization all = new Organization();
+        all.setName(org.getName());
+        all.setFullName(org.getFullName());
+        all.setAddress(org.getAddress());
+        all.setInn(org.getInn());
+        all.setKpp(org.getKpp());
+        all.setPhone(org.getPhone());
+        all.setIsActive(org.getIsActive());
+        dao.save(all);
+        return mF.map(all, OrganizationView.class);
+    }
 }
