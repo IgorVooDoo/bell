@@ -1,6 +1,7 @@
 package com.demo.project.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Organization {
@@ -16,6 +17,9 @@ public class Organization {
     private long kpp;
     @Column(name = "is_active")
     private boolean isActive;
+
+    @OneToMany(mappedBy = "organization")
+    private List<Office> office;
 
     public Organization() {
     }
@@ -83,8 +87,17 @@ public class Organization {
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
-    public String toString(){
-        return "{id:"+id+";name:"+name+";}";
+
+    public List<Office> getOffice() {
+        return office;
+    }
+
+    public void setOffice(List<Office> office) {
+        this.office = office;
+    }
+
+    public String toString() {
+        return "{id:" + id + ";name:" + name + ";}";
     }
 }
 

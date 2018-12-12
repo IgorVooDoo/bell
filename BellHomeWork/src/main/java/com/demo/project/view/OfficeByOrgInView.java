@@ -2,16 +2,14 @@ package com.demo.project.view;
 
 import javax.validation.constraints.NotEmpty;
 
-public class OfficeView {
+public class OfficeByOrgInView {
     @NotEmpty
-    private int id;
+    public int orgId;
     public String name;
-    public String adress;
     public String phone;
     public boolean isActive;
 
-
-    public String toString(){
-        return "{id:"+id+";name:"+name+";}";
+    public String toString() {
+        return "{orgId:" + orgId + ";name:" + name + ";}";
     }
 }

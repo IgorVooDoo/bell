@@ -1,10 +1,10 @@
 package com.demo.project.controller;
 
 import com.demo.project.service.OfficeService;
+import com.demo.project.view.OfficeByOrgInView;
+import com.demo.project.view.OfficeByOrgOutView;
 import com.demo.project.view.OfficeView;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +21,10 @@ public class OfficeController {
     @GetMapping("/office")
     public List<OfficeView> all(){
         return service.all();
+    }
+
+    @PostMapping("/office/list")
+    public List<OfficeByOrgOutView> findByIdOrg(@RequestBody OfficeByOrgInView req) {
+        return service.findByOrg(req.orgId);
     }
 }
