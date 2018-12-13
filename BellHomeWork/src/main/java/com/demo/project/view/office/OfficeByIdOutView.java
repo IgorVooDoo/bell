@@ -1,17 +1,16 @@
-package com.demo.project.view;
+package com.demo.project.view.office;
 
 import javax.validation.constraints.NotEmpty;
 
-public class OfficeView {
+public class OfficeByIdOutView {
     @NotEmpty
-    private int id;
+    public int id;
     public String name;
     public String adress;
     public String phone;
     public boolean isActive;
 
-
-    public String toString(){
-        return "{id:"+id+";name:"+name+";}";
+    public String toString() {
+        return "{id:" + id + ";name:" + name + ";}";
     }
 }

@@ -1,4 +1,4 @@
-package com.demo.project.view;
+package com.demo.project.view.office;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -8,6 +8,7 @@ public class OfficeByOrgInView {
     public String name;
     public String phone;
     public boolean isActive;
+
 
     public String toString() {
         return "{orgId:" + orgId + ";name:" + name + ";}";

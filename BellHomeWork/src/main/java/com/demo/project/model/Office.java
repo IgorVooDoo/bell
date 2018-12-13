@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Office {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String adress;
@@ -13,7 +13,7 @@ public class Office {
     private boolean isActive;
 
     @ManyToOne
-    @JoinColumn(name = "org_id", nullable = false)
+    @JoinColumn(name = "org_id")
     private Organization organization;
 
     public int getId() {
