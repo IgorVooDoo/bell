@@ -1,23 +1,26 @@
 package com.demo.project.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String firstName;
     private String lastName;
     private String middleName;
     private String position;
-    private int docId;
-    private int citizenshipId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "doc_id")
+    private Document document;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "citizenship_id")
+    private CountryType countryType;
     private int isIdentified;
-    private int officeId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "office_id")
+    private Office office;
 
     public int getId() {
         return id;
@@ -59,22 +62,6 @@ public class Employee {
         this.position = position;
     }
 
-    public int getDocId() {
-        return docId;
-    }
-
-    public void setDocId(int docId) {
-        this.docId = docId;
-    }
-
-    public int getCitizenshipId() {
-        return citizenshipId;
-    }
-
-    public void setCitizenshipId(int citizenshipId) {
-        this.citizenshipId = citizenshipId;
-    }
-
     public int getIsIdentified() {
         return isIdentified;
     }
@@ -83,11 +70,28 @@ public class Employee {
         this.isIdentified = isIdentified;
     }
 
-    public int getOfficeId() {
-        return officeId;
+    public Document getDocument() {
+        return document;
     }
 
-    public void setOfficeId(int officeId) {
-        this.officeId = officeId;
+    public void setDocument(Document document) {
+        this.document = document;
     }
+
+    public CountryType getCountryType() {
+        return countryType;
+    }
+
+    public void setCountryType(CountryType countryType) {
+        this.countryType = countryType;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
+    }
+
 }

@@ -12,7 +12,7 @@ public class Office {
     private String phone;
     private boolean isActive;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "org_id")
     private Organization organization;
 
