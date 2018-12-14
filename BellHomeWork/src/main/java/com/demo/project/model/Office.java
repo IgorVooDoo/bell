@@ -16,6 +16,9 @@ public class Office {
     @JoinColumn(name = "org_id")
     private Organization organization;
 
+    public Office() {
+    }
+
     public int getId() {
         return id;
     }

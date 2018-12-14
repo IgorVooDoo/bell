@@ -1,4 +1,4 @@
-package com.demo.project.view;
+package com.demo.project.view.employee;
 
 import com.demo.project.model.CountryType;
 import com.demo.project.model.Document;

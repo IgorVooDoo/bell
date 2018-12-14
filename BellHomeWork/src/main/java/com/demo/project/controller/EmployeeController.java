@@ -1,11 +1,10 @@
 package com.demo.project.controller;
 
 import com.demo.project.service.EmployeeService;
-import com.demo.project.service.OfficeService;
-import com.demo.project.view.EmployeeView;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.demo.project.view.employee.EmployeeByOfficeIdOutView;
+import com.demo.project.view.employee.EmployeeByOfficeIdViewIn;
+import com.demo.project.view.employee.EmployeeView;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,8 +19,19 @@ public class EmployeeController {
     public EmployeeController(EmployeeService service) {
         this.service = service;
     }
-    @GetMapping("/employee")
+
+    @GetMapping("/employee/all")
     public List<EmployeeView> all(){
         return service.all();
+    }
+
+    @PostMapping("/employee/list")
+    public List<EmployeeByOfficeIdOutView> findByOffice(@RequestBody EmployeeByOfficeIdViewIn req) {
+        return service.findByOffice(req.officeId);
+    }
+
+    @GetMapping("/employee")
+    public EmployeeByOfficeIdOutView getById(@RequestParam int id) {
+        return service.findById(id);
     }
 }

@@ -11,6 +11,12 @@ public class Employee {
     private String lastName;
     private String middleName;
     private String position;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "office_id")
+    private Office office;
+
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "doc_id")
     private Document document;
@@ -18,9 +24,7 @@ public class Employee {
     @JoinColumn(name = "citizenship_id")
     private CountryType countryType;
     private int isIdentified;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "office_id")
-    private Office office;
+
 
     public int getId() {
         return id;
@@ -85,7 +89,6 @@ public class Employee {
     public void setCountryType(CountryType countryType) {
         this.countryType = countryType;
     }
-
     public Office getOffice() {
         return office;
     }
