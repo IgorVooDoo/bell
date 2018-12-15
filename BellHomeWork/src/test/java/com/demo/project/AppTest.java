@@ -3,6 +3,8 @@ package com.demo.project;
 
 import com.demo.project.model.Organization;
 import com.demo.project.model.mapper.MapperFacade;
+import com.demo.project.view.organization.OrganizationSaveView;
+import com.demo.project.view.organization.OrganizationUpdateView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -74,6 +76,40 @@ public class AppTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Java"));
     }
 
+    @Test
+    public void organizationSaveTest() throws Exception {
+        OrganizationSaveView req = new OrganizationSaveView();
+        req.name = "JPA";
+        req.fullName = "JPA API";
+        req.address = "JDK 1.8";
+        req.isActive = true;
+        req.phone = "9189788877";
+        req.inn = 7777777;
+        req.kpp = 55555;
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/organization/save")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(req)))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void organizationUpdateTest() throws Exception {
+        OrganizationUpdateView req = new OrganizationUpdateView();
+        req.id = 2;
+        req.name = "Spring";
+        req.fullName = "Spring Boot";
+        req.address = "SinCity";
+        req.isActive = true;
+        req.phone = "9189788877";
+        req.inn = 233777777;
+        req.kpp = 555454555;
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/organization/update")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(req)))
+                .andDo(print())
+                .andExpect(status().isOk());
+    }
 
     public static String asJsonString(final Object obj) {
         try {

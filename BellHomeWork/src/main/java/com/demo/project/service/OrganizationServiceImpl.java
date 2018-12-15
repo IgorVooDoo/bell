@@ -3,7 +3,7 @@ package com.demo.project.service;
 import com.demo.project.dao.OrganizationDao;
 import com.demo.project.model.Organization;
 import com.demo.project.model.mapper.MapperFacade;
-import com.demo.project.view.OrganizationView;
+import com.demo.project.view.organization.OrganizationView;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,7 +38,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public OrganizationView update(Organization org) {
+    public void update(Organization org) {
         Organization all = dao.findById(org.getId());
         all.setName(org.getName());
         all.setFullName(org.getFullName());
@@ -48,12 +48,11 @@ public class OrganizationServiceImpl implements OrganizationService {
         all.setPhone(org.getPhone());
         all.setIsActive(org.getIsActive());
         dao.save(all);
-        return mF.map(all, OrganizationView.class);
     }
 
     @Override
     @Transactional
-    public OrganizationView save(Organization org) {
+    public void save(Organization org) {
         Organization all = new Organization();
         all.setName(org.getName());
         all.setFullName(org.getFullName());
@@ -63,7 +62,6 @@ public class OrganizationServiceImpl implements OrganizationService {
         all.setPhone(org.getPhone());
         all.setIsActive(org.getIsActive());
         dao.save(all);
-        return mF.map(all, OrganizationView.class);
     }
 
 }

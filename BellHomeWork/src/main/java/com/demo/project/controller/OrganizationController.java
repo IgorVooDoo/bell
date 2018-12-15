@@ -2,7 +2,9 @@ package com.demo.project.controller;
 
 import com.demo.project.model.Organization;
 import com.demo.project.service.OrganizationService;
-import com.demo.project.view.OrganizationView;
+import com.demo.project.view.organization.OrganizationView;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,13 +36,23 @@ public class OrganizationController {
     }
 
     @PostMapping("/organization/update")
-    public OrganizationView update(@RequestBody Organization org) {
-        return service.update(org);
+    public ResponseEntity update(@RequestBody Organization org) {
+        try {
+            service.update(org);
+            return new ResponseEntity("{\"result\":\"success\"}", HttpStatus.OK);
+        } catch (Exception ex) {
+            return new ResponseEntity("{\"result\":\"" + ex.getMessage() + "\"}", HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("/organization/save")
-    public OrganizationView save(@RequestBody Organization org) {
-        return service.save(org);
+    public ResponseEntity save(@RequestBody Organization org) {
+        try {
+            service.save(org);
+            return new ResponseEntity("{\"result\":\"success\"}", HttpStatus.OK);
+        } catch (Exception ex) {
+            return new ResponseEntity("{\"result\":\"" + ex.getMessage() + "\"}", HttpStatus.BAD_REQUEST);
+        }
     }
 
 }

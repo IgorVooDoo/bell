@@ -1,4 +1,4 @@
-package com.demo.project.view;
+package com.demo.project.view.organization;
 
 import javax.validation.constraints.NotEmpty;
 

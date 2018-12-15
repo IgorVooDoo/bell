@@ -1,7 +1,7 @@
 package com.demo.project.service;
 
 import com.demo.project.model.Organization;
-import com.demo.project.view.OrganizationView;
+import com.demo.project.view.organization.OrganizationView;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public interface OrganizationService {
 
     OrganizationView findById(int id);
 
-    OrganizationView update(Organization org);
+    void update(Organization org) throws Exception;
 
-    OrganizationView save(Organization org);
+    void save(Organization org) throws Exception;
 }
