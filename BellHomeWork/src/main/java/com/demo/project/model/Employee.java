@@ -11,20 +11,21 @@ public class Employee {
     private String lastName;
     private String middleName;
     private String position;
+    private String phone;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "office_id")
     private Office office;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "doc_id")
     private Document document;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "citizenship_id")
     private CountryType countryType;
     private int isIdentified;
-
 
     public int getId() {
         return id;
@@ -64,6 +65,14 @@ public class Employee {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public int getIsIdentified() {

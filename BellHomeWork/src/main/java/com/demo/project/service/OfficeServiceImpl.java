@@ -45,7 +45,7 @@ public class OfficeServiceImpl implements OfficeService {
     public void save(OfficeSaveView office) {
         Office all = new Office();
         all.setName(office.name);
-        all.setAdress(office.adress);
+        all.setAddress(office.address);
         all.setPhone(office.phone);
         all.setIsActive(office.isActive);
         dao.save(all);
@@ -55,7 +55,7 @@ public class OfficeServiceImpl implements OfficeService {
     public void update(OfficeUpdateView office) {
         Office all = dao.findById(office.id);
         all.setName(office.name);
-        all.setAdress(office.adress);
+        all.setAddress(office.address);
         all.setPhone(office.phone);
         all.setIsActive(office.isActive);
         dao.save(all);

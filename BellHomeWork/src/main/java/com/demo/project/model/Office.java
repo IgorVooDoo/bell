@@ -8,7 +8,7 @@ public class Office {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String adress;
+    private String address;
     private String phone;
     private boolean isActive;
 
@@ -35,12 +35,12 @@ public class Office {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhone() {

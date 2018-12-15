@@ -8,7 +8,7 @@ public class OfficeView {
     @NotEmpty
     public int id;
     public String name;
-    public String adress;
+    public String address;
     public String phone;
     public boolean isActive;
     public Organization organization;

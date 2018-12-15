@@ -8,7 +8,7 @@ public class OfficeUpdateView {
     @NotEmpty
     public String name;
     @NotEmpty
-    public String adress;
+    public String address;
     public String phone;
     public boolean isActive;
 
