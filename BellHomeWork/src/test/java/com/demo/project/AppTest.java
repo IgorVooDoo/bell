@@ -74,13 +74,6 @@ public class AppTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Java"));
     }
 
-    @Test
-    public void officeAllTest() throws Exception{
-        this.mockMvc.perform(get("/api/office/all"))
-                .andDo(print())
-                .andExpect(status().isOk());
-    }
-
 
     public static String asJsonString(final Object obj) {
         try {
