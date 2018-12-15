@@ -1,32 +1,23 @@
 /*MariaDB 10.3*/
 
 CREATE TABLE IF NOT EXISTS Doc_type (
-    id      INT NOT NULL AUTO_INCREMENT COMMENT 'Уникальный идентификатор;',
+    code    INT NOT NULL COMMENT 'Числовой код документа; Уникальный идентификатор;',
     name    VARCHAR(45) NOT NULL COMMENT 'Наименование вида документа;',
-    code    INT NOT NULL COMMENT 'Числовой код документа;',
-    PRIMARY KEY (id)
+    PRIMARY KEY (code)
 ) COMMENT = 'Перечень документов удостоверяющих личность.';
 
 /*Document - таблица документов работников*/
 CREATE TABLE IF NOT EXISTS Document (
   id INT NOT NULL AUTO_INCREMENT COMMENT 'Уникальный идентификатор',
-  type INT NOT NULL COMMENT 'Ссылка на атрибут id в таблице Doc_type',
+  type INT NOT NULL COMMENT 'Ссылка на атрибут code в таблице Doc_type',
   doc_number INT NOT NULL COMMENT 'Номер документа',
   doc_date DATE NOT NULL COMMENT 'Дата выдачи документа',
   PRIMARY KEY (id),
   KEY FK__doc_type (type),
-  CONSTRAINT FK__doc_type FOREIGN KEY (type) REFERENCES doc_type (id)
+  CONSTRAINT FK__doc_type FOREIGN KEY (type) REFERENCES doc_type (code)
 ) COMMENT = 'Таблица документов работников';
 
 create index Ix_number_doc on Document(doc_number);
-
-/*Country_type - справочная таблица с перечнем стран*/
-CREATE TABLE IF NOT EXISTS Country_type (
-    id      INT NOT NULL AUTO_INCREMENT COMMENT 'Уникальный идентификатор',
-    name    VARCHAR(45) NOT NULL COMMENT 'Наименование страны',
-    code    INT NOT NULL COMMENT 'Числовой код страны',
-    PRIMARY KEY (id)
-) COMMENT = 'Cправочная таблица с перечнем стран';
 
 
 /*Organization - таблица организаций*/
@@ -49,7 +40,7 @@ create index Ix_inn_org on Organization(inn);
 CREATE TABLE IF NOT EXISTS Office (
   id INT NOT NULL AUTO_INCREMENT COMMENT 'Уникальный идентификатор',
   name VARCHAR(45) NOT NULL COMMENT 'Наименование офиса',
-  adress VARCHAR(100) NOT NULL COMMENT 'Адрес расположения офиса',
+  address VARCHAR(100) NOT NULL COMMENT 'Адрес расположения офиса',
   phone VARCHAR(45) COMMENT 'Номер телефона в данном офисе',
   is_active BOOLEAN COMMENT 'Актуальность',
   org_id INT NOT NULL COMMENT 'Ссылка на организацию, к которой принадлежит офис',
@@ -60,6 +51,13 @@ CREATE TABLE IF NOT EXISTS Office (
 
 create index Ix_name_ofc on Office(name);
 
+/*Country_type - справочная таблица с перечнем стран*/
+CREATE TABLE IF NOT EXISTS Country_type (
+    code    INT NOT NULL COMMENT 'Числовой код страны; Уникальный идентификатор',
+    name    VARCHAR(45) NOT NULL COMMENT 'Наименование страны',
+    PRIMARY KEY (code)
+) COMMENT = 'Cправочная таблица с перечнем стран';
+
 /*Employee - таблица сотрудников*/
 CREATE TABLE IF NOT EXISTS Employee (
   id INT NOT NULL AUTO_INCREMENT COMMENT 'Уникальный идентификатор',
@@ -67,6 +65,7 @@ CREATE TABLE IF NOT EXISTS Employee (
   last_name VARCHAR(45) COMMENT 'Фамилия',
   middle_name VARCHAR(45) COMMENT 'Отчество',
   position VARCHAR(45) NOT NULL COMMENT 'Должность',
+  phone VARCHAR(45) COMMENT 'Номер телефона',
   doc_id INT COMMENT 'Ссылка на id документа работника в таблице Document',
   citizenship_id INT COMMENT 'Ссылка на id страны в таблице Country_type',
   is_identified INT COMMENT '',
@@ -77,7 +76,7 @@ CREATE TABLE IF NOT EXISTS Employee (
   KEY employee_office_fk (office_id),
   CONSTRAINT employee_office_fk FOREIGN KEY (office_id) REFERENCES office (id),
   KEY employee_country_type_fk (citizenship_id),
-  CONSTRAINT employee_country_type_fk FOREIGN KEY (citizenship_id) REFERENCES country_type (id)
+  CONSTRAINT employee_country_type_fk FOREIGN KEY (citizenship_id) REFERENCES country_type (code)
 ) COMMENT = 'Таблица сотрудников';
 
 create index Ix_name_emp on Employee(last_name);
