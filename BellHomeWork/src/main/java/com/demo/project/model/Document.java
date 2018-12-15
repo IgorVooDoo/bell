@@ -7,7 +7,7 @@ import java.util.Date;
 @Table(name = "document")
 public class Document {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int docNumber;
     private Date docDate;

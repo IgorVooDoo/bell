@@ -4,8 +4,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 public class DocTypeView {
-    @NotEmpty
-    private int id;
     @Size(max=45)
     @NotEmpty(message = "Наименование документа cannot be null")
     public String name;
@@ -14,6 +12,6 @@ public class DocTypeView {
 
     @Override
     public String toString(){
-        return "{id:" + id + ";name:" + name + ";code:" + code + "}";
+        return "name:" + name + ";code:" + code + "}";
     }
 }

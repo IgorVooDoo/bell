@@ -23,4 +23,10 @@ public class CountryTypeServiseImpl implements CountryTypeService {
         Iterable<CountryType> all = dao.findAll();
         return mF.mapAsList(all,CountryTypeView.class);
     }
+
+    @Override
+    public CountryTypeView findByCode(int code) {
+        CountryType all = dao.findByCode(code);
+        return mF.map(all, CountryTypeView.class);
+    }
 }

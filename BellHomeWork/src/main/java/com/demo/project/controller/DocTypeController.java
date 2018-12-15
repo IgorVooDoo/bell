@@ -3,6 +3,7 @@ package com.demo.project.controller;
 import com.demo.project.service.DocTypeService;
 import com.demo.project.view.DocTypeView;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,4 +22,8 @@ public class DocTypeController {
     @GetMapping("/docs")
     public List<DocTypeView> all(){return service.all();}
 
+    @GetMapping("/doc")
+    public DocTypeView all(@RequestBody DocTypeView doc) {
+        return service.findByCode(doc.code);
+    }
 }

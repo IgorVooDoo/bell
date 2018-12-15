@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CountryTypeService {
     List<CountryTypeView> all();
+
+    CountryTypeView findByCode(int code);
 }

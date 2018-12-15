@@ -77,14 +77,14 @@ public class AppTest {
 
     @Test
     public void officeAllTest() throws Exception{
-        this.mockMvc.perform(get("/api/office"))
+        this.mockMvc.perform(get("/api/office/all"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }
 
     @Test
     public void employeeAllTest() throws Exception{
-        this.mockMvc.perform(get("/api/employee"))
+        this.mockMvc.perform(get("/api/employee/all"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }

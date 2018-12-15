@@ -7,10 +7,9 @@ import com.demo.project.view.DocTypeView;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class DocTypeServiceImpl implements DocTypeService{
+public class DocTypeServiceImpl implements DocTypeService {
     private final DocTypeDao dao;
     private final MapperFacade mP;
 
@@ -22,6 +21,13 @@ public class DocTypeServiceImpl implements DocTypeService{
     @Override
     public List<DocTypeView> all() {
         Iterable<DocType> all = dao.findAll();
-        return mP.mapAsList(all,DocTypeView.class);
+        return mP.mapAsList(all, DocTypeView.class);
     }
+
+    @Override
+    public DocTypeView findByCode(int code) {
+        DocType all = dao.findByCode(code);
+        return mP.map(all, DocTypeView.class);
+
     }
+}

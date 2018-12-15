@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface DocTypeService {
     List<DocTypeView> all();
+
+    DocTypeView findByCode(int code);
 }
