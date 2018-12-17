@@ -6,6 +6,12 @@ import com.demo.project.model.Office;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * Представление данных объекта Employee
+ * для GET-запроса api/employee/all
+ *
+ * @see com.demo.project.controller.EmployeeController
+ */
 public class EmployeeView {
     @NotEmpty
     public int id;

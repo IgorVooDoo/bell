@@ -2,6 +2,12 @@ package com.demo.project.view.organization;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * Представление данных объекта Organization
+ * для POST-запроса api/organization/list
+ *
+ * @see com.demo.project.controller.OrganizationController
+ */
 public class OrganizationView {
     @NotEmpty
     public int id;

@@ -2,6 +2,12 @@ package com.demo.project.view.employee;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * Представление входных данных объекта Employee
+ * для POST-запроса api/employee/list (фильтр по ид офиса)
+ *
+ * @see com.demo.project.controller.EmployeeController
+ */
 public class EmployeeByOfficeIdViewIn {
     @NotEmpty
     public int officeId;

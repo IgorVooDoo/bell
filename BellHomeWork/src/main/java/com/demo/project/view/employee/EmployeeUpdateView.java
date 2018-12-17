@@ -3,6 +3,12 @@ package com.demo.project.view.employee;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
+/**
+ * Представление входных данных объекта Employee
+ * для POST-запроса api/employee/update
+ *
+ * @see com.demo.project.controller.EmployeeController
+ */
 public class EmployeeUpdateView {
     @NotEmpty
     public int id;

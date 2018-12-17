@@ -4,6 +4,12 @@ import com.demo.project.model.Organization;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * Представление данных объекта Office
+ * для POST-запроса api/office/all
+ *
+ * @see com.demo.project.controller.OfficeController
+ */
 public class OfficeView {
     @NotEmpty
     public int id;

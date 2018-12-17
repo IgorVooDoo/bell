@@ -5,6 +5,12 @@ import com.demo.project.model.DocType;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
+/**
+ * Представление данных объекта Document
+ * для GET-запроса /api/documents
+ *
+ * @see com.demo.project.controller.DocumentController
+ */
 public class DocumentView {
 
     @NotEmpty

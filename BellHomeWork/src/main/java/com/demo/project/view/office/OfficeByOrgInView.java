@@ -2,6 +2,12 @@ package com.demo.project.view.office;
 
 import javax.validation.constraints.NotEmpty;
 
+/**
+ * Представление входных данных объекта Office
+ * для POST-запроса api/office/list (фильтр по ИД организации)
+ *
+ * @see com.demo.project.controller.OfficeController
+ */
 public class OfficeByOrgInView {
     @NotEmpty
     public int orgId;
