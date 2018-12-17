@@ -49,7 +49,7 @@ public class OfficeTest {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/api/office?id=1")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Java Core"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Java Beans"));
     }
 
     @Test

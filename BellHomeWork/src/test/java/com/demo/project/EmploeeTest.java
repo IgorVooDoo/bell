@@ -88,7 +88,7 @@ public class EmploeeTest {
     @Test
     public void employeeUpdateTest() throws Exception {
         EmployeeUpdateView req = new EmployeeUpdateView();
-        req.id = 6;
+        req.id = 1;
         req.firstName = "Васильев";
         req.lastName = "Сергей";
         req.middleName = "Петрович";
