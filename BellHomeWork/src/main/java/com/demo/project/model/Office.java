@@ -2,16 +2,33 @@ package com.demo.project.model;
 
 import javax.persistence.*;
 
+/**
+ * Офисы организации
+ */
 @Entity
 public class Office {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    /**
+     * Наименование офиса
+     */
     private String name;
+    /**
+     * Адрес офиса
+     */
     private String address;
+    /**
+     * Телефон офиса
+     */
     private String phone;
+    /**
+     * Актуальность
+     */
     private boolean isActive;
-
+    /**
+     * Связь офиса с организацией
+     */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "org_id")
     private Organization organization;

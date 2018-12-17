@@ -2,18 +2,42 @@ package com.demo.project.model;
 
 import javax.persistence.*;
 
+/**
+ * Объект таблицы организаций
+ */
 @Entity
 public class Organization {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    /**
+     * Наименование организации
+     */
     private String name;
+    /**
+     * Полное наименование организации
+     */
     private String fullName;
+    /**
+     * Адрес организации
+     */
     private String address;
+    /**
+     * Телефон
+     */
     private String phone;
+    /**
+     * ИНН
+     */
     private long inn;
+    /**
+     * КПП
+     */
     private long kpp;
+    /**
+     * Актуальность
+     */
     @Column(name = "is_active")
     private boolean isActive;
 

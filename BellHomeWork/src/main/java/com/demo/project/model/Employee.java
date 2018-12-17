@@ -2,29 +2,56 @@ package com.demo.project.model;
 
 import javax.persistence.*;
 
+/**
+ * Объект таблицы сотрудников
+ */
 @Entity
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    /**
+     * Имя
+     */
     private String firstName;
+    /**
+     * Фамилия
+     */
     private String lastName;
+    /**
+     * Отчество
+     */
     private String middleName;
+    /**
+     * Должность
+     */
     private String position;
+    /**
+     * Телефон сотрудника
+     */
     private String phone;
-
+    /**
+     * Связь с сотрудника с офисом
+     */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "office_id")
     private Office office;
 
-
+    /**
+     * Связь сотрудника с таблицей документов
+     */
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "doc_id")
     private Document document;
-
+    /**
+     * Связь сотрудника со справочником стран
+     */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "citizenship_id")
     private CountryType countryType;
+    /**
+     *
+     */
     private int isIdentified;
 
     public int getId() {
@@ -98,6 +125,7 @@ public class Employee {
     public void setCountryType(CountryType countryType) {
         this.countryType = countryType;
     }
+
     public Office getOffice() {
         return office;
     }

@@ -3,11 +3,19 @@ package com.demo.project.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * Справочная таблица с перечнем стран
+ */
 @Entity
 public class CountryType {
-
+    /**
+     * Числовой код страны; Уникальный идентификатор
+     */
     @Id
     private int code;
+    /**
+     * Наименование страны
+     */
     private String name;
 
     public String getName() {

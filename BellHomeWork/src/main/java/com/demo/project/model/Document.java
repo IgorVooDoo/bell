@@ -3,14 +3,27 @@ package com.demo.project.model;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Таблица документов работников
+ */
 @Entity
 @Table(name = "document")
 public class Document {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    /**
+     * Номер документа
+     */
     private int docNumber;
+    /**
+     * Дата выдачи документа
+     */
     private Date docDate;
+    /**
+     * Связь со справочником типов документов
+     */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "type")
     private DocType type;
