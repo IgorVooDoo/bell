@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS Office (
   address VARCHAR(100) NOT NULL COMMENT 'Адрес расположения офиса',
   phone VARCHAR(45) COMMENT 'Номер телефона в данном офисе',
   is_active BOOLEAN COMMENT 'Актуальность',
-  org_id INT NOT NULL COMMENT 'Ссылка на организацию, к которой принадлежит офис',
+  org_id INT COMMENT 'Ссылка на организацию, к которой принадлежит офис',
   PRIMARY KEY (id),
   KEY office_organization_fk (org_id),
   CONSTRAINT office_organization_fk FOREIGN KEY (org_id) REFERENCES organization (id)
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS Employee (
   office_id INT COMMENT 'Ссылка на id офиса в таблице Office',
   PRIMARY KEY (id),
   KEY employee_document_fk (doc_id),
-  CONSTRAINT employee_document_fk FOREIGN KEY (doc_id) REFERENCES document (id),
+  CONSTRAINT employee_document_fk FOREIGN KEY (doc_id) REFERENCES document (id) ON DELETE CASCADE,
   KEY employee_office_fk (office_id),
   CONSTRAINT employee_office_fk FOREIGN KEY (office_id) REFERENCES office (id),
   KEY employee_country_type_fk (citizenship_id),
