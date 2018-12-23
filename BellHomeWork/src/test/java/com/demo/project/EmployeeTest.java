@@ -23,15 +23,18 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Тест обработки запросов объекта Employee
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class EmploeeTest {
+public class EmployeeTest {
     private MapperFacade mf;
     @Autowired
     private MockMvc mockMvc;
 
-    public static String asJsonString(final Object obj) {
+    private static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);
         } catch (Exception e) {
@@ -39,6 +42,11 @@ public class EmploeeTest {
         }
     }
 
+    /**
+     * Тест получения полного списка
+     *
+     * @throws Exception
+     */
     @Test
     public void employeeAllTest() throws Exception {
         this.mockMvc.perform(get("/api/employee/all"))
@@ -46,6 +54,10 @@ public class EmploeeTest {
                 .andExpect(status().isOk());
     }
 
+    /**
+     * Фильтр по офису
+     * @throws Exception
+     */
     @Test
     public void employeeByOfficeTest() throws Exception {
         EmployeeByOfficeIdViewIn req = new EmployeeByOfficeIdViewIn();
@@ -57,6 +69,10 @@ public class EmploeeTest {
                 .andExpect(status().isOk());
     }
 
+    /**
+     * Поиск по идентификатору
+     * @throws Exception
+     */
     @Test
     public void employeeByIdTest() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/api/employee?id=2")
@@ -65,6 +81,10 @@ public class EmploeeTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.firstName").value("Пушкин"));
     }
 
+    /**
+     * Сохранение объекта
+     * @throws Exception
+     */
     @Test
     public void employeeSaveTest() throws Exception {
         EmployeeSaveView req = new EmployeeSaveView();
@@ -85,6 +105,10 @@ public class EmploeeTest {
                 .andExpect(status().isOk());
     }
 
+    /**
+     * Обновление данных объекта
+     * @throws Exception
+     */
     @Test
     public void employeeUpdateTest() throws Exception {
         EmployeeUpdateView req = new EmployeeUpdateView();

@@ -21,6 +21,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Тест обработки запросов объекта Office
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -29,7 +32,7 @@ public class OfficeTest {
     @Autowired
     private MockMvc mockMvc;
 
-    public static String asJsonString(final Object obj) {
+    private static String asJsonString(final Object obj) {
         try {
             return new ObjectMapper().writeValueAsString(obj);
         } catch (Exception e) {
@@ -37,6 +40,11 @@ public class OfficeTest {
         }
     }
 
+    /**
+     * Получение списка всех объектов
+     *
+     * @throws Exception
+     */
     @Test
     public void officeAllTest() throws Exception {
         this.mockMvc.perform(get("/api/office/all"))
@@ -44,6 +52,10 @@ public class OfficeTest {
                 .andExpect(status().isOk());
     }
 
+    /**
+     * Поиск по идентификатору
+     * @throws Exception
+     */
     @Test
     public void officeByIdTest() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/api/office?id=1")
@@ -52,6 +64,10 @@ public class OfficeTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value("Java Beans"));
     }
 
+    /**
+     * Поиск по идентификатору организации
+     * @throws Exception
+     */
     @Test
     public void officeByOrgTest() throws Exception {
         OfficeByOrgInView req = new OfficeByOrgInView();
@@ -63,6 +79,10 @@ public class OfficeTest {
                 .andExpect(status().isOk());
     }
 
+    /**
+     * Сохранение объекта
+     * @throws Exception
+     */
     @Test
     public void officeSaveTest() throws Exception {
         OfficeSaveView req = new OfficeSaveView();
@@ -77,6 +97,10 @@ public class OfficeTest {
                 .andExpect(status().isOk());
     }
 
+    /**
+     * Обновление объекта
+     * @throws Exception
+     */
     @Test
     public void officeUpdateTest() throws Exception {
         OfficeUpdateView req = new OfficeUpdateView();
