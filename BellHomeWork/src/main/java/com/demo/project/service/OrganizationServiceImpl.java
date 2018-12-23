@@ -4,16 +4,27 @@ import com.demo.project.dao.OrganizationDao;
 import com.demo.project.model.Organization;
 import com.demo.project.model.mapper.MapperFacade;
 import com.demo.project.view.organization.OrganizationView;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Реализация интерфейса
+ */
 @Service
 public class OrganizationServiceImpl implements OrganizationService {
     private final OrganizationDao dao;
     private final MapperFacade mF;
 
+    /**
+     * Конструктор с параметрами
+     *
+     * @param dao
+     * @param mF
+     */
+    @Autowired
     public OrganizationServiceImpl(OrganizationDao dao, MapperFacade mF) {
         this.dao = dao;
         this.mF = mF;

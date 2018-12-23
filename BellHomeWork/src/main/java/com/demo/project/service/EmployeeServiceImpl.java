@@ -16,6 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Реализация интерфейса
+ */
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeDao dao;
@@ -23,6 +27,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final DocTypeDao docTypeDao;
     private final CountryTypeDao countryTypeDao;
 
+    /**
+     * Конструктор с параметрами
+     *
+     * @param dao
+     * @param countryTypeDao
+     * @param docType
+     * @param mF
+     */
     @Autowired
     public EmployeeServiceImpl(EmployeeDao dao, CountryTypeDao countryTypeDao, DocTypeDao docType, MapperFacade mF) {
         this.dao = dao;

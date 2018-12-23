@@ -10,12 +10,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Реализация интерфейса
+ */
 @Service
 public class OfficeServiceImpl implements OfficeService {
 
     private final OfficeDao dao;
     private final MapperFacade mF;
 
+    /**
+     * Конструктор с параметрами
+     *
+     * @param dao
+     * @param mF
+     */
     @Autowired
     public OfficeServiceImpl(OfficeDao dao, MapperFacade mF) {
         this.dao = dao;
